@@ -16,7 +16,7 @@ let urlPairs = []
 //Middleware functions
 const urlSaver = (req,res,next) => {
   if (req.method === "POST"){
-    urlPairs.push({orginal_url: req.body.url, short_url:urlPairs.length});
+    urlPairs.push({original_url: req.body.url, short_url:urlPairs.length});
   }  
   next();
 }
@@ -42,7 +42,7 @@ app.get('/api/shorturl/:value', function(req, res) {
   let urlPair = urlPairs.find(obj => obj.short_url === shorturl);
 
   if (urlPair){
-    res.redirect(urlPair.orginal_url);
+    res.redirect(urlPair.original_url);
   } else {
     res.json({error:	"No short URL found for the given input"})
   }
